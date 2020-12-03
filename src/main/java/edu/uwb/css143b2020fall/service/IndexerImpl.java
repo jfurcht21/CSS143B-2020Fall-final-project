@@ -15,9 +15,14 @@ public class IndexerImpl implements Indexer {
         for(int i = 0; i < docs.size(); i++){
             String doc = docs.get(i);
             String[] words = doc.split(" ");
-            for(String word : words){
-                if(indexes.containsKey(word)){
-                    indexes.put();
+            for(int j = 0; j < words.length; j++){
+                if(indexes.containsKey(words[j])){
+                    indexes.get(words[j]).add();
+                }
+                else{
+                    List<List<Integer>> newList = new ArrayList<>();
+                    newList.add(i);
+                    indexes.put(words[j], j);
                 }
             }
         }
