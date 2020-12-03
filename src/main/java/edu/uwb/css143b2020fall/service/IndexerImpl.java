@@ -2,10 +2,7 @@ package edu.uwb.css143b2020fall.service;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class IndexerImpl implements Indexer {
@@ -17,12 +14,16 @@ public class IndexerImpl implements Indexer {
             String[] words = doc.split(" ");
             for(int j = 0; j < words.length; j++){
                 if(indexes.containsKey(words[j])){
-                    indexes.get(words[j]).add();
+                    indexes.get(words[j]).add(Arrays.asList(i));
                 }
                 else{
                     List<List<Integer>> newList = new ArrayList<>();
-                    newList.add(i);
-                    indexes.put(words[j], j);
+                    List<Integer> newWord = new ArrayList<>();
+                    newList.add(newWord);
+                    //Fails here on i = 1 during indexer test. Also check to ensure document number is
+                    //Separate from list of positions in the document
+                    newList.set(i, Arrays.asList(j));
+                    indexes.put(words[j], newList);
                 }
             }
         }
