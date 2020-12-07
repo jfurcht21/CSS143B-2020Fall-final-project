@@ -16,17 +16,17 @@ public class IndexerImpl implements Indexer {
         {
             String doc = docs.get(i);
             //Split document 1 into array of individual words
-            String[] words = doc.split(" ");
+            String[] words = doc.split("\\s+");
 
             // Finds additional whitespace or null words
-            int whiteSpace = 0;
+           int whiteSpace = 0;
             for(String word : words) {
                 if (word.equals("") || word.equals(" ")) {
                     whiteSpace++;
                 }
             }
 
-            //If whitespace or null words are found they will be removed
+           //If whitespace or null words are found they will be removed
             if(whiteSpace > 0)
             {
                 String[] wordsNoWhiteSpace = new String[words.length-whiteSpace];
